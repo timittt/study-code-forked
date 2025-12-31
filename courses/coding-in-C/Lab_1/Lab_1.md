@@ -90,6 +90,16 @@ Follow-up section to section VI.
 
 ## Section VIII: Working with remote repositories
 
+This section describes the process you should follow for the upcoming labs:
+
+* create a branch on your forked repository
+* do your work on the branch and commit it
+* push it to your fork and merge it remotely
+* pull back the changes to the local main branch
+
+You can also use Codesspaces for these exercises starting with point 3.
+
+
 1. Configure SSH for your GitHub account and your local machine.
 2. Clone the forked repository [study-code](https://github.com/christian-braunagel/study-code) from section I to your local machine via ssh.
 3. Open your local terminal and navigate to the cloned project.
@@ -100,3 +110,4 @@ Follow-up section to section VI.
 8. Resolve the issue as suggested by Git and perform the push successfully.
 9. Navigate to your repository on github.com and create a Pull Request.
 10. Check out the pull requests and the changes you pushed to GitHub before merging them.
+11. Pull the merged changes from the remote repository to your local main branch.

@@ -3,7 +3,7 @@
 ## Introduction
 Write a C program that prints the coordinates of a chessboard to the terminal.
 
-## Section I: 
+## Section I
 
 ### Task Description
 
@@ -37,7 +37,7 @@ Your program must:
 - print columns from `A` to `H`
 - not hard-code each field manually
 
-## Section II:
+## Section II
 
 Create a flow chart for the programm developed in Section I.
 You can use [draw.io](https://www.drawio.com/) as a free tool to create the flow chart.
