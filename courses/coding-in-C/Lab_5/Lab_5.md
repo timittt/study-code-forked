@@ -26,12 +26,12 @@ int main(void) {
 2. Then change the value of x via pp to 42.
 3. Print x again and verify the result.
 4. What are the types of the following expressions?
-- x
-- p
-- *p
-- pp
-- *pp
-- **pp
+- x = int
+- p = pointer
+- *p = int
+- pp = pointer auf pointer
+- *pp = pointer
+- **pp = int
 
 ## Section II
 
