@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <string.h>
 
-struct Car {
+struct Car 
+{
     float fuel_level;
     float max_fuel_level;
     char name[50];
@@ -26,7 +26,10 @@ int main()
     struct Car myCar = {0.5, 55, "VW Touran"};
     printf("Enter amount to refuel: ");
     int add = 0;
-    scanf("%d", &add);
+    if (scanf("%d", &add) != 1) {
+        printf("Ungueltige Eingabe!\n");
+        return 1;
+    }
     refuel(&myCar, add);
     return 0;
 }
