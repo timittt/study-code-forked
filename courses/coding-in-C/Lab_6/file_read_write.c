@@ -1,3 +1,9 @@
+/*
+THIS FILE IS A DEMO FOR MERGING TWO SETS OF SENSOR RECORDINGS
+It reads the data inside two text files
+and copies the text line by line into a third file (results.txt)
+*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -15,15 +21,17 @@ int main(){
     char line2[100]; // Puffer für Sensor 2
 
     // fgets liest bis zum Zeilenumbruch \n oder bis der Puffer voll ist
+    int line_count = 0;
     while (fgets(line1, sizeof(line1), values_s1) != NULL && 
            fgets(line2, sizeof(line2), values_s2) != NULL) 
     {
-        line1[strlen(line1)-1] = '\0';
+        line1[strcspn(line1, "\n")] = '\0';
         fputs(line1, results);
         fputc(' ', results);
-        fputs(line2, results);
-        //fputs("\n", results);
+        fputs(line2 + 5, results); // remove redundant first 5 characters
+        line_count++;
     }
+    fprintf(results, "Line %d - end of file", line_count+1);
 
     // 3. Dateien schließen
     fclose(values_s1);
