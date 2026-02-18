@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(){
     FILE* values_s1 = fopen("sensor1.txt", "r");
@@ -17,17 +18,17 @@ int main(){
     while (fgets(line1, sizeof(line1), values_s1) != NULL && 
            fgets(line2, sizeof(line2), values_s2) != NULL) 
     {
-        
-        // In die Ergebnisdatei schreiben
-        // Da fgets das \n meist mitleast, hängen wir sie direkt an
-        fprintf(results, "S1: %s", line1);
-        fprintf(results, "S2: %s", line2);
+        line1[strlen(line1)-1] = '\0';
+        fputs(line1, results);
+        fputc(' ', results);
+        fputs(line2, results);
+        //fputs("\n", results);
     }
 
     // 3. Dateien schließen
     fclose(values_s1);
     fclose(values_s2);
     fclose(results);
-
+    printf("Files copied successfully!\n");
     return 0;
 }
