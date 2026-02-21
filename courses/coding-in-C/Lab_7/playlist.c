@@ -19,6 +19,18 @@ void init_playlist(Playlist *pl)
     pl->head = NULL;
 }
 
+int count_songs(Playlist *pl)
+{
+    unsigned int i = 0;
+    Song *temp = pl->head;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+        i++;
+    }
+    return i;
+}
+
 void add_song(char *song_title, char *song_artist, Playlist *pl)
 {
     Song *new_song = malloc(sizeof(Song));
@@ -46,6 +58,40 @@ void add_song(char *song_title, char *song_artist, Playlist *pl)
         temp->next = new_song;
     }
     printf("Song \"%s\" by %s added sucessfully\n", new_song->title, new_song->artist);
+}
+
+void add_song_index(char *song_title, char *song_artist, unsigned int index, Playlist *pl)
+{
+    unsigned int current_count = count_songs(pl);
+    if (current_count < index - 1)
+    {
+        printf("Error: Index %d not available (Playlist contains %d songs)\n", index, current_count);
+        return;
+    }
+    Song *new_song = malloc(sizeof(Song));
+    if ((new_song) == NULL) // no memory left
+    {
+        printf("Error: Playlist is full\n");
+        return;
+    }
+    new_song->title = strdup(song_title); // strdup == malloc + strcpy
+    new_song->artist = strdup(song_artist);
+    if(index == 1)  // direkt am Anfang einfügen
+    {
+        new_song->next = pl->head;
+        pl->head = new_song;
+    }
+    else
+    {
+        Song *temp = pl->head;
+        for(int i = 0; i < index - 2; i++) //Bis zum Element vor dem neuen Song gehen
+        {
+            temp = temp->next;
+        }
+        new_song->next = temp->next;
+        temp->next = new_song;
+    }
+    printf("Song \"%s\" by %s added sucessfully on index %d.\n", new_song->title, new_song->artist, index);
 }
 
 void print_playlist(Playlist *pl)
@@ -126,5 +172,13 @@ int main()
 
     print_playlist(&braunagelsListe);
 
+    add_song_index("EFN", "vrigger", 8, &timsListe);
+
+    add_song_index("EFN", "vrigger", 1, &timsListe);
+    add_song_index("Never Gonna Give You Up", "Rick Astley", 1, &timsListe);
+
+    print_playlist(&timsListe);
+    
+    delete_playlist(&timsListe);
     return 0;
 }
