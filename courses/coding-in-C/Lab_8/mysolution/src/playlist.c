@@ -138,6 +138,7 @@ void delete_firstSong(Playlist *pl, unsigned short print_action)
     {
         Song *temp = pl->head;
         pl->head = pl->head->next; // zweiter Song oder NULL
+        pl->size = pl->size - 1;
         if (print_action)
         {
             printf("Deleted first song \"%s\" by %s successfully\n", temp->title, temp->artist);
