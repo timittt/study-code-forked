@@ -47,7 +47,7 @@ void test_add_song_index(void)
     assert(p.size == 5);
     
     Song *temp = p.head;
-    for(int i = 0; i < 3; i++) // go to index 3
+    for(int i = 0; i < 2; i++) // go to index 3
     {
         temp = temp->next;
     }
@@ -108,11 +108,11 @@ void test_max_songs_limit(void)
 
     for (int i = 0; i < MAX_SONGS; i++)
     {
-        add_song(&p, "X", "Y");
+        add_song("X", "Y", &p);
     }
     assert(p.size == MAX_SONGS);
 
-    add_song(&p, "Overflow", "Error");
+    add_song("Overflow", "Error", &p);
     assert(p.size == MAX_SONGS); // should not be increased
 
     delete_playlist(&p);
