@@ -104,20 +104,16 @@ void test_delete_playlist(void)
 void test_max_songs_limit(void)
 {
     Playlist p;
-    init_playlist(&p);    
-    add_song("First Song", "First Artist", &p);
-    add_song("Second Song", "Second Artist", &p);
-    add_song("Third Song", "Third Artist", &p);
-    add_song("Fourth Song", "Fourth Artist", &p); // Should not be added because limit is set at 3
-    
-    assert(p.size == 3);
-    Song *temp = p.head;
-    while(temp->next != NULL) // go to last song
+    init_playlist(&p);
+
+    for (int i = 0; i < MAX_SONGS; i++)
     {
-        temp = temp->next;
+        add_song(&p, "X", "Y");
     }
-    assert(temp != NULL);
-    assert(strcmp(temp->title, "Third Song") == 0);
+    assert(p.size == MAX_SONGS);
+
+    add_song(&p, "Overflow", "Error");
+    assert(p.size == MAX_SONGS); // should not be increased
 
     delete_playlist(&p);
 }
