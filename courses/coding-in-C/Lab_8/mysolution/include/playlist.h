@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_SONGS 3
+#define MAX_SONGS 100
 
 /**
  * @struct Song
