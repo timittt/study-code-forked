@@ -1,22 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "../include/playlist.h"
 
-typedef struct Song
-{
-    char *title;
-    char *artist;
-    struct Song *next;
-} Song;
-
-typedef struct Playlist
-{
-    struct Song *head;
-} Playlist;
 
 void init_playlist(Playlist *pl)
 {
     pl->head = NULL;
+    pl->size = 0;
 }
 
 int count_songs(Playlist *pl)
@@ -33,10 +24,15 @@ int count_songs(Playlist *pl)
 
 void add_song(char *song_title, char *song_artist, Playlist *pl)
 {
+    if(pl->size >= MAX_SONGS)
+    {
+        printf("Error: Playlist is full!\n");
+        return;
+    }
     Song *new_song = malloc(sizeof(Song));
     if ((new_song) == NULL) // no memory left
     {
-        printf("Couldn't add song, playlist is full\n");
+        printf("Allocation error.\n");
         return;
     }
 
@@ -57,13 +53,23 @@ void add_song(char *song_title, char *song_artist, Playlist *pl)
         }
         temp->next = new_song;
     }
-    printf("Song \"%s\" by %s added sucessfully\n", new_song->title, new_song->artist);
+    pl->size = pl->size + 1; //count up
+    printf("Song \"%s\" by %s added successfully\n", new_song->title, new_song->artist);
 }
 
 void add_song_index(char *song_title, char *song_artist, unsigned int index, Playlist *pl)
 {
-    unsigned int current_count = count_songs(pl);
-    if (current_count < index - 1)
+    if(index < 1)
+    {
+        printf("Error: invalid index\n");
+        return;
+    }
+    if(pl->size >= MAX_SONGS)
+    {
+        printf("Error: Playlist is full!\n");
+        return;
+    }
+    if (pl->size < index - 1)
     {
         printf("Error: Index %d not available (Playlist contains %d songs)\n", index, current_count);
         return;
@@ -91,7 +97,8 @@ void add_song_index(char *song_title, char *song_artist, unsigned int index, Pla
         new_song->next = temp->next;
         temp->next = new_song;
     }
-    printf("Song \"%s\" by %s added sucessfully on index %d.\n", new_song->title, new_song->artist, index);
+    pl->size = pl->size + 1; //count up
+    printf("Song \"%s\" by %s added successfully on index %d.\n", new_song->title, new_song->artist, index);
 }
 
 void print_playlist(Playlist *pl)
@@ -133,7 +140,7 @@ void delete_firstSong(Playlist *pl, unsigned short print_action)
         pl->head = pl->head->next; // zweiter Song oder NULL
         if (print_action)
         {
-            printf("Deleted first song \"%s\" by %s sucessfully\n", temp->title, temp->artist);
+            printf("Deleted first song \"%s\" by %s successfully\n", temp->title, temp->artist);
         }
         free(temp->title);
         free(temp->artist);
@@ -146,39 +153,7 @@ void delete_playlist(Playlist *pl)
     while (pl->head != NULL)
     {
         delete_firstSong(pl, 0); // 0 -> nicht jeden gelöschten Song ausgeben
-        pl->head = pl->head->next;
     }
-    printf("Playlist deleted sucessfully\n");
-}
-
-int main()
-{
-    Playlist braunagelsListe;
-    Playlist timsListe;
-    init_playlist(&braunagelsListe);
-    init_playlist(&timsListe);
-
-    add_song("Crawling", "Linkin Park", &braunagelsListe);
-    add_song("Layla", "Eric Clapton", &braunagelsListe);
-    add_song("Esperanto", "Max Herre", &braunagelsListe);
-
-    print_playlist(&braunagelsListe);
-
-    delete_firstSong(&braunagelsListe, 1);
-
-    print_playlist(&braunagelsListe);
-
-    delete_playlist(&braunagelsListe);
-
-    print_playlist(&braunagelsListe);
-
-    add_song_index("EFN", "vrigger", 8, &timsListe);
-
-    add_song_index("EFN", "vrigger", 1, &timsListe);
-    add_song_index("Never Gonna Give You Up", "Rick Astley", 1, &timsListe);
-
-    print_playlist(&timsListe);
-    
-    delete_playlist(&timsListe);
-    return 0;
+    pl->size = 0;
+    printf("Playlist deleted successfully\n");
 }
