@@ -71,7 +71,7 @@ void add_song_index(char *song_title, char *song_artist, unsigned int index, Pla
     }
     if (pl->size < index - 1)
     {
-        printf("Error: Index %d not available (Playlist contains %d songs)\n", index, current_count);
+        printf("Error: Index %d not available (Playlist contains %d songs)\n", index, pl->size);
         return;
     }
     Song *new_song = malloc(sizeof(Song));
