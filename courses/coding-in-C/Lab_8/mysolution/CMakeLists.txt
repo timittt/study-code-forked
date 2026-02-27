@@ -57,7 +57,7 @@ add_custom_target(run_tests
 
 # Executable
 add_executable(playlist_app
-    main.c
+    src/main.c
     src/playlist.c
 )
 
