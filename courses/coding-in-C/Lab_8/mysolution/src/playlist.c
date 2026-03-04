@@ -167,31 +167,54 @@ Song* find_song_by_title(Playlist *pl, const char *title)
     {
         return NULL;
     }
-    else
+    while (temp != NULL)
     {
-        while (temp != NULL)
+        if(strcmp(temp->title, title) == 0)
         {
-            if(strcmp(temp->title, title) == 0)
-            {
-                return temp;
-            }
-            temp = temp->next;
+            return temp;
         }
-        return NULL;
+        temp = temp->next;
     }
+    return NULL;
 }
 
 int count_songs_recursive(const Song *current)
 {
-    if(current == NULL) // not an existing song
+    if(current == NULL)
     {
-        return -1;
+        return 0;
     }
-    unsigned int count = 1;
-    if(current->next != NULL)
-    {
-        count++;
-        current_songs_recursive(current->next);
+    return (1 + count_songs_recursive(current->next));
+}
+
+void sort_playlist_by_title(Playlist *pl)
+{
+    if (pl->head == NULL || pl->head->next == NULL) {
+        return;
     }
-    return count;
+    Song temp; 
+    temp.next = NULL;
+    
+    Song *current = pl->head;
+
+    while (current != NULL) {
+        Song *next_node = current->next;
+
+        // 3. Suche in der sortierten Liste (ab temp) die richtige Position
+        Song *search = &temp;
+        while (search->next != NULL && _stricmp(current->title, search->next->title) > 0) {
+            search = search->next;
+        }
+
+        // 4. "Einklicken" (Die 2-Schritt-Regel)
+        current->next = search->next; // Der Aktuelle zeigt auf den Nachfolger von search
+        search->next = current;      // Search zeigt jetzt auf den Aktuellen
+
+        // 5. Weiter zum nächsten Song der ursprünglichen Liste
+        current = next_node;
+    }
+
+    // 6. Die Playlist auf den neuen Anfang setzen
+    pl->head = temp.next;
+    printf("Playlist sorted alphabetically.\n");
 }

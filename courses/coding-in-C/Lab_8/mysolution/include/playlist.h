@@ -86,4 +86,10 @@ Song* find_song_by_title(Playlist *pl, const char *title);
  */
 int count_songs_recursive(const Song *current);
 
+/**
+ * @brief sorts the playlist alphabetically by song title
+ * @param pl Pointer to the playlist.
+ */
+void sort_playlist_by_title(Playlist *pl);
+
 #endif
