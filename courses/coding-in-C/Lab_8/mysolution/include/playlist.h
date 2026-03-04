@@ -75,7 +75,15 @@ void delete_playlist(Playlist *pl);
  * @brief Looks for a song with given title
  * @param pl Pointer to the playlist
  * @param title String which is searched
+ * @return pointer to song or NULL if not found
  */
 Song* find_song_by_title(Playlist *pl, const char *title);
-    
+
+/**
+ * @brief Counts the songs in a playlist using a recursive algorithm
+ * @param current pointer to the first song in the playlist
+ * @return song count
+ */
+int count_songs_recursive(const Song *current);
+
 #endif

@@ -180,3 +180,18 @@ Song* find_song_by_title(Playlist *pl, const char *title)
         return NULL;
     }
 }
+
+int count_songs_recursive(const Song *current)
+{
+    if(current == NULL) // not an existing song
+    {
+        return -1;
+    }
+    unsigned int count = 1;
+    if(current->next != NULL)
+    {
+        count++;
+        current_songs_recursive(current->next);
+    }
+    return count;
+}
