@@ -71,4 +71,11 @@ void delete_firstSong(Playlist *pl, unsigned short print_action);
  */
 void delete_playlist(Playlist *pl);
 
+/**
+ * @brief Looks for a song with given title
+ * @param pl Pointer to the playlist
+ * @param title String which is searched
+ */
+Song* find_song_by_title(Playlist *pl, const char *title);
+    
 #endif

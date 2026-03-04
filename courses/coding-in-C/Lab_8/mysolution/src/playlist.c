@@ -158,3 +158,25 @@ void delete_playlist(Playlist *pl)
     pl->size = 0;
     printf("Playlist deleted successfully\n");
 }
+
+Song* find_song_by_title(Playlist *pl, const char *title)
+{
+    Song *temp = pl->head;
+
+    if (temp == NULL)
+    {
+        return NULL;
+    }
+    else
+    {
+        while (temp != NULL)
+        {
+            if(strcmp(temp->title, title) == 0)
+            {
+                return temp;
+            }
+            temp = temp->next;
+        }
+        return NULL;
+    }
+}
