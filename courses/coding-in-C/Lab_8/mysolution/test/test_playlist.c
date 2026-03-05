@@ -76,6 +76,7 @@ void test_delete_firstSong(void)
     assert(p.size == 1);
     assert(strcmp(p.head->artist, "Second Artist") == 0);
     assert(strcmp(p.head->title, "Second Song") == 0);
+    delete_playlist(&p);
 }
 
 void test_delete_firstSong_empty(void)
@@ -127,9 +128,16 @@ void test_find_song_by_title(void)
     add_song("Third Song", "Third Artist", &p);
 
     assert(find_song_by_title(&p, "Tirol") == NULL);
-    assert(find_song_by_title(&p, "First Song") == p.head);
-    assert(strcmp(find_song_by_title(&p, "First Song"), p.head->title) == 0);
-    assert(find_song_by_title(&p, "Third Song") == p.head->next->next);
+
+    Song *found = find_song_by_title(&p, "First Song");
+    assert(found == p.head);
+    assert(strcmp(found->title, "First Song") == 0);
+
+    found = find_song_by_title(&p, "Third Song");
+    assert(found == p.head->next->next);
+    assert(strcmp(found->artist, "Third Artist") == 0);
+
+    delete_playlist(&p);
 }
 
 void test_count_songs_recursive(void)
@@ -143,6 +151,8 @@ void test_count_songs_recursive(void)
     }
 
     assert(count_songs_recursive(p.head) == p.size);
+
+    delete_playlist(&p);
 }
 
 void test_sort_playlist_by_title(void)
@@ -160,6 +170,8 @@ void test_sort_playlist_by_title(void)
     assert(strcmp(p.head->next->title, "Bravoooooo") == 0);
     assert(strcmp(p.head->next->next->title, "c") == 0);
     assert(strcmp(p.head->next->next->next->title, "Donut") == 0);
+
+    delete_playlist(&p);
 }
 
 /* === Test-Runner === */
@@ -173,6 +185,9 @@ int main(void)
     test_delete_playlist();
     test_max_songs_limit(); // verify if the limit will be not be surpassed
     test_add_song_index();
+    test_find_song_by_title();
+    test_count_songs_recursive();
+    test_sort_playlist_by_title();
 
     printf("Alle Playlist-Tests erfolgreich bestanden.\n");
     return 0;

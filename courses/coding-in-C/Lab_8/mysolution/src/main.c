@@ -12,7 +12,7 @@ int main()
 {
     Playlist my_list;
     init_playlist(&my_list);
-
+/* USER INTERFACE
     int choice = 0;
     int target_index = 0;
     char title_buf[100];
@@ -86,4 +86,5 @@ int main()
         }
     }
     return 0;
+    */
 }
