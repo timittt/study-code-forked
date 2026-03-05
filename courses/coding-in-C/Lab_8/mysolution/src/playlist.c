@@ -192,29 +192,28 @@ void sort_playlist_by_title(Playlist *pl)
     if (pl->head == NULL || pl->head->next == NULL) {
         return;
     }
+
     Song temp; 
     temp.next = NULL;
-    
     Song *current = pl->head;
 
     while (current != NULL) {
-        Song *next_node = current->next;
-
-        // 3. Suche in der sortierten Liste (ab temp) die richtige Position
+        Song *next_node = current->next; // current->next sichern bevor es überschrieben wird
         Song *search = &temp;
-        while (search->next != NULL && _stricmp(current->title, search->next->title) > 0) {
+        // gehe mit search bis zum nächsten unsortierten Element
+        while (search->next != NULL && _stricmp(current->title, search->next->title) > 0)
+        {
             search = search->next;
         }
 
-        // 4. "Einklicken" (Die 2-Schritt-Regel)
-        current->next = search->next; // Der Aktuelle zeigt auf den Nachfolger von search
-        search->next = current;      // Search zeigt jetzt auf den Aktuellen
+        // unsortierten Song mit current Song tauschen
+        current->next = search->next;
+        search->next = current;
 
-        // 5. Weiter zum nächsten Song der ursprünglichen Liste
+        // Weiter zum nächsten Song der unsortierten Liste
         current = next_node;
     }
 
-    // 6. Die Playlist auf den neuen Anfang setzen
     pl->head = temp.next;
     printf("Playlist sorted alphabetically.\n");
 }
