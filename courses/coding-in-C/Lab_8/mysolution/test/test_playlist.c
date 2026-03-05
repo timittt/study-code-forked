@@ -118,6 +118,50 @@ void test_max_songs_limit(void)
     delete_playlist(&p);
 }
 
+void test_find_song_by_title(void)
+{
+    Playlist p;
+    init_playlist(&p);
+    add_song("First Song", "First Artist", &p);
+    add_song("Second Song", "Second Artist", &p);
+    add_song("Third Song", "Third Artist", &p);
+
+    assert(find_song_by_title(&p, "Tirol") == NULL);
+    assert(find_song_by_title(&p, "First Song") == p.head);
+    assert(strcmp(find_song_by_title(&p, "First Song"), p.head->title) == 0);
+    assert(find_song_by_title(&p, "Third Song") == p.head->next->next);
+}
+
+void test_count_songs_recursive(void)
+{
+    Playlist p;
+    init_playlist(&p);
+    assert(count_songs_recursive(p.head) == 0);
+    for (int i = 0; i < 69; i++)
+    {
+        add_song("Title", "Artist", &p);
+    }
+
+    assert(count_songs_recursive(p.head) == p.size);
+}
+
+void test_sort_playlist_by_title(void)
+{
+    Playlist p;
+    init_playlist(&p);
+    add_song("Bravoooooo", "Artist", &p);
+    add_song("Donut", "Artist", &p);
+    add_song("c", "Artist", &p);
+    add_song("asjlfslakdjaskjfsa", "Artist", &p);
+    sort_playlist_by_title(&p);
+
+    assert(p.size == 4);
+    assert(strcmp(p.head->title, "asjlfslakdjaskjfsa") == 0);
+    assert(strcmp(p.head->next->title, "Bravoooooo") == 0);
+    assert(strcmp(p.head->next->next->title, "c") == 0);
+    assert(strcmp(p.head->next->next->next->title, "Donut") == 0);
+}
+
 /* === Test-Runner === */
 
 int main(void)
