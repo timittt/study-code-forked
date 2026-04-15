@@ -18,7 +18,6 @@ build/
 obj/
 bin/
 .vs/
-cpp-labs/
 
 # User-specific files
 *.rsuser
@@ -26,6 +25,10 @@ cpp-labs/
 *.user
 *.userosscache
 *.sln.docstates
+*.slnx
+*.vcxproj
+*.filters
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
