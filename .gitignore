@@ -25,10 +25,6 @@ bin/
 *.user
 *.userosscache
 *.sln.docstates
-*.slnx
-*.vcxproj
-*.filters
-
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
