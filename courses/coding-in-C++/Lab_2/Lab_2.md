@@ -210,7 +210,7 @@ Write a corrected version of the program that solves all found issues and is in 
 ### Hint
 Many of the errors are related to core OOP principles such as encapsulation, proper initialization, and safe memory handling discussed in the lecture.
 
-## 🟢 Section IV: Create UML Class Diagrams
+## 🟢 Section IV: Create UML Class Diagram
 
 In this section you will practice the basics of the UML class diagram notation.
 
