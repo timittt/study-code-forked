@@ -1,7 +1,7 @@
 #include "drink_utils.hpp"
 
 DrinkBuilder::DrinkBuilder()
-	: name{ DEFAULT_NAME }, sugar{ DEFAULT_SUGAR }, temperature{ DEFAULT_TEMPERATURE }, withMilk{ DEFAULT_MILK } {
+	: name{ "PLACEHOLDER" }, sugar{ DEFAULT_SUGAR }, temperature{ DEFAULT_TEMPERATURE }, withMilk{ DEFAULT_MILK } {
 }
 
 DrinkBuilder& DrinkBuilder::setName(const std::string& name)

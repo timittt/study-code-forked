@@ -7,7 +7,6 @@
 #include <limits>
 #include <cstdint>
 
-std::string DEFAULT_NAME = "PLACEHOLDER";
 constexpr int DEFAULT_SUGAR = 0;
 constexpr int DEFAULT_TEMPERATURE = 25;
 constexpr bool DEFAULT_MILK = false;
