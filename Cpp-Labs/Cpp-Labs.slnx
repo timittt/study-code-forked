@@ -3,7 +3,8 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="../courses/coding-in-C++/Lab_1/myLab1Sec4/myLab1Sec4.vcxproj" Id="77dc5cbe-c07a-41ca-9c88-fdddea4cd0f9" />
   <Project Path="../courses/coding-in-C++/Lab_1/myLab1/myLab1.vcxproj" Id="74e4143b-648a-4b41-a16b-76ddfdf75826" />
+  <Project Path="../courses/coding-in-C++/Lab_1/myLab1Sec4/myLab1Sec4.vcxproj" Id="77dc5cbe-c07a-41ca-9c88-fdddea4cd0f9" />
   <Project Path="../courses/coding-in-C++/Lab_2/myLab2sec4/myLab2sec4.vcxproj" Id="7dd83dd7-9b7d-473b-a51e-902a9e593191" />
+  <Project Path="../courses/coding-in-C++/Lab_3/myLab3Sec2/myLab3Sec2.vcxproj" Id="953175d3-4d93-4e37-a965-6926e0a42111" />
 </Solution>
