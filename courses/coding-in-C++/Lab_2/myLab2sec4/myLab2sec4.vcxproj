@@ -132,7 +132,7 @@
     <ClCompile Include="myLab2sec4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Lab_1\myLab1Sec4\drink_utils.hpp" />
+    <ClInclude Include="..\..\Lab_2\myLab2Sec4\drink_utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,8 +27,8 @@ public:
 
 private:
 	std::string name;
-	int sugar;
-	int temperature;
+	uint8_t sugar;
+	uint8_t temperature;
 	bool withMilk;
 };
 

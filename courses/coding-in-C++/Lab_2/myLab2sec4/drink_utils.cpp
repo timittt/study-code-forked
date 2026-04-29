@@ -33,8 +33,8 @@ void DrinkBuilder::print() const
 	const int CELL_WIDTH = 12;
 	std::cout << "+++DRINK  INFORMATION+++\n\n";
 	std::cout << std::left << std::setw(CELL_WIDTH) << "Drink:" << std::right << std::setw(CELL_WIDTH) << name << std::endl;
-	std::cout << std::left << std::setw(CELL_WIDTH) << "Sugar:" << std::right << std::setw(CELL_WIDTH) << sugar << std::endl;
-	std::cout << std::left << std::setw(CELL_WIDTH) << "Temperature:" << std::right << std::setw(CELL_WIDTH) << temperature << std::endl;
+	std::cout << std::left << std::setw(CELL_WIDTH) << "Sugar:" << std::right << std::setw(CELL_WIDTH) << static_cast<int>(sugar) << std::endl;
+	std::cout << std::left << std::setw(CELL_WIDTH) << "Temperature:" << std::right << std::setw(CELL_WIDTH) << static_cast<int>(temperature) << std::endl;
 	std::cout << std::left << std::setw(CELL_WIDTH) << "Milk:" << std::right << std::setw(CELL_WIDTH) << (withMilk ? "Yes" : "No") << std::endl;
 }
 
