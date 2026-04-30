@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cctype>
 
 constexpr int THRESHOLD_POPULARITY = 6;
 constexpr int MAX_RESULTS = 10;
@@ -77,7 +78,7 @@ public:
         int found_count = 0;
         std::string search_term = q.get_prompt();
 
-        std::cout << "--- Search Results for: " << search_term << " ---" << std::endl;
+        std::cout << "\n--- Search Results for: " << search_term << " ---" << std::endl;
 
         // Range based for loop
         for (const auto& res : catalog) {

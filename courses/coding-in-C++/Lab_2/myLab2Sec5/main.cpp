@@ -12,11 +12,12 @@ int main()
     }*/
 
     std::string input;
+    std::cout << "Press Enter to start!\n";
 
     while (true) 
     { 
-        std::cout << "Type your search term (or 'exit' to quit): ";
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Type your search term (or 'exit' to quit): ";
         std::getline(std::cin, input);
 
         if (input == "exit") 
@@ -59,6 +60,6 @@ int main()
         }
     }
 
-    std::cout << "\nTotal Queries: " << Engine::get_total_queries() << std::endl;
+    std::cout << "\nTotal Queries: " << Engine::get_total_queries() << "\nClosing program." << std::endl;
     return 0;
 }
