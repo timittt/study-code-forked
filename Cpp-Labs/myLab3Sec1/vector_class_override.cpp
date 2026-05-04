@@ -35,6 +35,7 @@ public:
 		this->x += v.getX();
 		this->y += v.getY();
 	}
+	friend std::ostream& operator<<(std::ostream& os, const Vector2D& v);
 
 private:
 	double x;
@@ -47,11 +48,29 @@ Vector2D operator+(const Vector2D& v1, const Vector2D& v2)
 	return Vector2D(v1.getX() + v2.getX(), v1.getY() + v2.getY());
 }
 
+// Scalar multiplication vector * scalar
+Vector2D operator*(const Vector2D& v1, const double scalar)
+{
+	return Vector2D(v1.getX() * scalar, v1.getY() * scalar);
+}
+
+// Scalar multiplication scalar * vector
+Vector2D operator*(const double scalar, const Vector2D& v1)
+{
+	return Vector2D(v1.getX() * scalar, v1.getY() * scalar);
+}
+
+std::ostream& operator<<(std::ostream& os, const Vector2D& v)
+{
+	os << "Vector(" << v.x << "|" << v.y << ")";
+	return os;
+}
+
 int main()
 {
 	Vector2D PunktA(2.11, 6.7);
 	PunktA.print();
-	std::cout << PunktA.getLength() << " Rounded (precision = 3): " << PunktA.getLength(3) << std::endl;
+	std::cout << 3 * PunktA << PunktA * 5 << PunktA.getLength() << " Rounded (precision = 3): " << PunktA.getLength(3) << std::endl;
 
 	Vector2D PunktB(6.893, 2.34241);
 	PunktB.print();
