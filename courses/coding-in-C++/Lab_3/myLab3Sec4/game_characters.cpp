@@ -148,3 +148,11 @@ bool Inventory::removeLastItem(std::string& item) {
 
 	return true;
 }
+
+int main() 
+{
+	Mage Harrypotter("Harry Potter", 95, 10);
+	Healer Dumbledore("Dumbledore", 78, 100);
+	Warrior Hagrid();
+	Thief Snape();
+}

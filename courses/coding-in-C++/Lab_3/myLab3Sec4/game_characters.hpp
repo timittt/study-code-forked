@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 
+// forward declarations
+class Weapon;
+class Inventory;
+class Healer;
+
 class Character // abstract class
 {
 public:
@@ -34,8 +39,8 @@ private:
 class Warrior : public Character
 {
 public:
-	Warrior();
-	~Warrior();
+	Warrior() {};
+	~Warrior() {};
 	std::string getType() const;
 	int getSP() const;
 
@@ -46,8 +51,8 @@ private:
 class Thief : public Warrior
 {
 public:
-	Thief();
-	~Thief();
+	Thief() {};
+	~Thief() {};
 	Thief& steal(Character& Target);
 };
 
@@ -55,7 +60,7 @@ class Mage : public Character
 {
 public:
 	Mage();
-	~Mage();
+	~Mage() {};
 	std::string getType() const;
 	int getSP() const;
 
@@ -66,8 +71,8 @@ private:
 class Healer : public Mage
 {
 public:
-	Healer();
-	~Healer();
+	Healer() {};
+	~Healer() {};
 	Healer& heal(Character& Target);
 };
 
