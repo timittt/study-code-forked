@@ -4,19 +4,19 @@
 #include <iostream>
 #include <string>
 
-class Character
+class Character // abstract class
 {
 public:
 	Character(std::string name, int hp, int level);
-	~Character();
+	virtual ~Character();
 	int getCharacterCount() const;
 	std::string getName() const;
 	int getHP() const;
 	int getLevel() const;
 	virtual std::string getType() const;
-	virtual int getSP() const;		// get Class-Specific points
-	void equipWeapon(Weapon* newWeapon);
-	Weapon& getCurrentWeapon() const;
+	virtual int getSP() = 0;		// get Class-Specific points
+	void equipWeapon(Weapon* p_newWeapon);
+	Weapon* getCurrentWeapon() const;
 	void displayStatus() const;
 	Inventory& getInventory();
 	void lvlUp();
@@ -28,7 +28,7 @@ private:
 	int hp;
 	int level;
 	Inventory inventory;
-	Weapon* weapon;
+	Weapon* p_weapon;
 };
 
 class Warrior : public Character
@@ -36,7 +36,7 @@ class Warrior : public Character
 public:
 	Warrior();
 	~Warrior();
-	std::string getType();
+	std::string getType() const;
 	int getSP() const;
 
 private:
@@ -56,7 +56,7 @@ class Mage : public Character
 public:
 	Mage();
 	~Mage();
-	std::string getType();
+	std::string getType() const;
 	int getSP() const;
 
 private:
@@ -89,13 +89,15 @@ class Inventory
 public:
 	Inventory();
 	~Inventory();
-	bool isEmpty();
-	bool isFull();
+	bool isEmpty() const;
+	bool isFull() const;
 	bool addItem(const std::string& item);
-	bool removeLastItem(const std::string& item);
-
+	bool removeLastItem(std::string& item);
+	int getItemCount() const;
+	static constexpr int MAX_SLOTS = 10;
 private:
-	std::string items[10];
+	std::string items[MAX_SLOTS];
+	int itemCount;
 };
 
 #endif // !GAME_CHARACTERS_HPP
