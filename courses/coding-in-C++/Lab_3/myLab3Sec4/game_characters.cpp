@@ -71,14 +71,14 @@ std::string Warrior::getType() const
 	return "Warrior";
 }
 
-int Warrior::getSP() const
+int Warrior::getSP() const 
 {
 	return skill_pts;
 }
 
 Thief& Thief::steal(Character& Target)
 {
-	if (Target.getInventory().isEmpty() || Target.getInventory().isFull())
+	if (Target.getInventory().isEmpty() || this->getInventory().isFull())
 	{
 		std::cout << "Stealing failed\n";
 	}
@@ -149,10 +149,28 @@ bool Inventory::removeLastItem(std::string& item) {
 	return true;
 }
 
+Weapon::Weapon() : name("Default Weapon"), damage(5) {}
+std::string Weapon::getName() const { return name; }
+int Weapon::getDmg() const { return damage; }
+
 int main() 
 {
-	Mage Harrypotter("Harry Potter", 95, 10);
-	Healer Dumbledore("Dumbledore", 78, 100);
-	Warrior Hagrid();
-	Thief Snape();
+	Mage m("Harry Potter", 95, 10, 67);
+	Healer d("Dumbledore", 78, 100, 333);
+	Warrior w("Hagrid", 300, 67, 100);
+	Thief t("Snape", 90, 79, 95);
+	m.displayStatus();
+	d.displayStatus();
+	w.displayStatus();
+	t.displayStatus();
+
+	t.steal(m);
+	d.heal(w);
+	m.lvlUp();
+	w.lvlUp();
+
+	m.displayStatus();
+	d.displayStatus();
+	w.displayStatus();
+	t.displayStatus();
 }
