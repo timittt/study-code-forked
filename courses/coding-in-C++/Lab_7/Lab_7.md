@@ -47,7 +47,7 @@ The adhacency matrix at element ```[i,j]``` is zero or non-zero depending on if 
 
 ## Task Description
 
-Create an adjacency matrix for the graph.
+Create an adjacency matrix for the graph. Interpret the characters A, B, C as 0, 1, 2.
 
 - Use boolean values for each element of the matrix and a fixed sized 2d array.
 - The matrix should be contained in a class called ```AdjacencyMatrix```.
@@ -75,3 +75,70 @@ In this section, we want to improve the existing class by getting rid of the fix
 
 Answer as comment in the code:
 * What is (still) the downside of this implementation of the matrix?
+
+## 🟡 Section IV: Adjacency List Representation
+
+An adjacency list is a way to represent a graph by storing, for each vertex (node), a list of all the vertices connected to it.
+
+An adjacency list stores each vertex together with a list of all vertices directly connected to it. Internally, this is usually implemented as an array/vector where each index represents a vertex and contains a linked list or vector of its neighbors.
+
+![Graph example with list](adjacencyList.svg)
+
+## Task Description
+
+Based on the image in this section IV, create a class called ```AdjacencyList```.
+
+Interpret the characters A, B, C as 0, 1, 2.
+
+The class should contain:
+- a vector container representing the adjacency list
+- a constructor to initialize the list
+- a method to add new vertices
+- a method to add edges between vertices
+- a method to print the adjacency list to the console
+
+Create an object in main representing the graph shown in the image above in section IV.
+
+---
+
+## 🔴 Section V: Shortest Path with Dijkstra
+
+In this section, you will extend your adjacency list implementation and use it to find the shortest path between two vertices.
+
+Dijkstra's algorithm is used to find the shortest path from one start vertex to all other vertices in a weighted graph. The algorithm works step by step by always selecting the currently unvisited vertex with the smallest known distance.
+
+Learn more about it [in this video](https://youtu.be/bZkzH5x0SKU?si=2SHKmCb2u9zQYWyR).
+
+## Task Description
+
+Extend your existing class `AdjacencyList` from Section IV.
+
+Use the following graph:
+
+![Graph example with weights](graphWeighted.svg)
+
+Interpret the characters A, B, C, D as 0, 1, 2, 3.
+
+The class should contain:
+- a vector container representing a weighted adjacency list
+- a method to add weighted edges between vertices
+- a method `findShortestPath(int start, int destination)`
+- a method to print the shortest path and its total distance
+
+The method `findShortestPath` should:
+- take a starting vertex and a destination vertex
+- calculate the shortest path using Dijkstra's algorithm
+- return the vertices of the shortest path including start and destination
+- also calculate the total distance of the shortest path
+
+Use the following simplifications:
+- assume that all edge weights are positive
+- assume that the graph is undirected
+
+Create an object in `main` representing the graph shown in the image above.
+
+Test your implementation with at least two different start and destination vertices.
+
+Answer as comment in the code:
+* Why is Dijkstra more efficient than calculating all possible paths?
+* Why does Dijkstra require non-negative edge weights?

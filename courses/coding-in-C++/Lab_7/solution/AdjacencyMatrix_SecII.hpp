@@ -1,18 +1,16 @@
 #ifndef ADJACENCY_MATRIX_HPP
 #define ADJACENCY_MATRIX_HPP
 
-#include <vector>
 class AdjacencyMatrix
 {
 private:
-    int size;
-    std::vector<std::vector<int>> matrix;
+    static constexpr int numVertices = 3;
+    bool matrix[numVertices][numVertices];
 
 public:
-    AdjacencyMatrix(int size);
+    AdjacencyMatrix();
 
-    void setEdge(int from, int to, int weight);
-    int getEdge(int from, int to) const;
+    void setEdge(int from, int to, bool exists);
 
     void printMatrix() const;
 };

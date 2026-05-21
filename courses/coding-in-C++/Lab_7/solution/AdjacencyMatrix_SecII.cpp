@@ -1,36 +1,31 @@
 #include <iostream>
-#include <vector>
 #include "AdjacencyMatrix_SecII.hpp"
 
-AdjacencyMatrix::AdjacencyMatrix(int size)
+AdjacencyMatrix::AdjacencyMatrix()
 {
-    this->size = size;
-    this->matrix = std::vector<std::vector<int>>(size, std::vector<int>(size, 0));
-}
-
-void AdjacencyMatrix::setEdge(int from, int to, int weight)
-{
-    if (from >= 0 && from < this->size && to >= 0 && to < this->size)
+    for (int i = 0; i < numVertices; ++i)
     {
-        matrix[from][to] = weight;
+        for (int j = 0; j < numVertices; ++j)
+        {
+            matrix[i][j] = false;
+        }
     }
 }
 
-int AdjacencyMatrix::getEdge(int from, int to) const
+void AdjacencyMatrix::setEdge(int from, int to, bool exists)
 {
-    if (from >= 0 && from < this->size && to >= 0 && to < this->size)
+    if (from >= 0 && from < numVertices && to >= 0 && to < numVertices)
     {
-        return matrix[from][to];
+        matrix[from][to] = exists;
     }
-    return -1; // Return -1 for invalid indices
 }
 
 void AdjacencyMatrix::printMatrix() const
 {
     std::cout << "Adjacency Matrix:\n";
-    for (int i = 0; i < this->size; ++i)
+    for (int i = 0; i < numVertices; ++i)
     {
-        for (int j = 0; j < this->size; ++j)
+        for (int j = 0; j < numVertices; ++j)
         {
             std::cout << matrix[i][j] << " ";
         }
@@ -40,7 +35,7 @@ void AdjacencyMatrix::printMatrix() const
 
 int main()
 {
-    AdjacencyMatrix graph(3);
+    AdjacencyMatrix graph;
 
     graph.setEdge(0, 1, true);
     graph.setEdge(1, 0, true);
@@ -54,7 +49,7 @@ int main()
     return 0;
 }
 
-// The current implementation of the Adjacency Matrix uses a containerized approach
-// with a 2D vector to store the edges and their weights.
-// However, this approach is still not optimal for large graphs due to its O(n^2) space complexity.
-// This is because it allocates space for all possible edges, even if many of them do not exist.
+// The current implementation of the Adjacency Matrix uses a fixed-size 2D array.
+// This approach is straightforward and efficient for small graphs, but:
+// - It is inflexible because the size is determined at compile time and cannot be changed at runtime.
+// - It can be memory-inefficient for larger graphs because all edges are stored, even if many of them do not exist.
