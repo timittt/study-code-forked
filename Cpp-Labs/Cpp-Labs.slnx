@@ -13,6 +13,7 @@
   <Project Path="../courses/coding-in-C++/Lab_4/myLab4Sec2/myLab4Sec2.vcxproj" Id="58ad2c6a-4cac-456b-9f1d-89a35b7fce0e" />
   <Project Path="../courses/coding-in-C++/Lab_4/myLab4Sec4/myLab4Sec4.vcxproj" Id="25e619dc-23a8-4e3e-a36b-cf03f63202b2" />
   <Project Path="../courses/coding-in-C++/Lab_5/generic-excercise/generic-excercise.vcxproj" Id="624e482e-88b5-4825-a612-bfb6272a6d0b" />
+  <Project Path="../courses/coding-in-C++/Lab_5/myLab5/myLab5.vcxproj" Id="374d8f3e-3263-4aaf-93d5-88267fba2db3" />
   <Project Path="../courses/coding-in-C++/Lab_6/myLab6Sec1/myLab6Sec1.vcxproj" Id="492a5754-ce67-4d8c-b306-f5c6bf8f69ab" />
   <Project Path="sort_with_lambdas/sort_with_lambdas.vcxproj" Id="009efc2e-6d96-40e0-a4de-be1b1470d01c" />
 </Solution>
