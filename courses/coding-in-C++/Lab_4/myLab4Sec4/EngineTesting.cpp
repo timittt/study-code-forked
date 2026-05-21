@@ -22,13 +22,13 @@ int main() {
     // 3. PIPELINE BEIDE PRODUKTE DURCHLAUFEN LASSEN
     std::cout << "--- STARTE QUALITAETSKONTROLLE ---\n";
     for (const auto& productPtr : productionLine) {
-        std::cout << "\nPruefe Produkt: " << productPtr->getName() << "\n";
+        std::cout << "\nPruefe Produkt: " << productPtr->getName() << "\n\n";
         bool productPassedEntirePipeline = true;
 
         // Iteration über die generische Pipeline via STL
         for (const auto& inspection : qualityPipeline) {
             bool stepResult = inspection->execute(*productPtr);
-            std::cout << " - ";
+            std::cout << inspection->getName() << ": ";
             // Hier nutzen wir das Interface, um den Typ auszugeben
             if (stepResult) {
                 std::cout << "PASS\n";

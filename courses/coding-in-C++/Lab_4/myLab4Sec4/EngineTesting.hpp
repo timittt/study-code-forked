@@ -27,6 +27,7 @@ public:
 
     // Jede Inspektion muss logisch prüfen können
     virtual bool execute(const Product& product) = 0;
+    std::string getName() { return typeName; }
 };
 
 
