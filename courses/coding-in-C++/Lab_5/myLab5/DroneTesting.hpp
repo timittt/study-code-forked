@@ -43,7 +43,7 @@ T getMinimum(const T* array, const int size)
 
 template <typename T, typename U>
 
-void printPair(T labelA, T labelB)
+void printPair(std::string labA, T valA, std::string labB, U valB)
 {
-
+	std::cout << labA << ": " << valA << " | " << labB << ": " << valB << std::endl;
 }
