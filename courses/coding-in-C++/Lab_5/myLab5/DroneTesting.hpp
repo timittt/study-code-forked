@@ -81,7 +81,7 @@ int cleanupVector(std::vector<T>& v)
 {
 	int error_count = 0;
 
-	for (auto it = v.begin() + 1; it != v.end(); it++)
+	for (auto it = v.begin(); it != v.end(); it++)
 	{
 		if (*it == -1)
 		{
