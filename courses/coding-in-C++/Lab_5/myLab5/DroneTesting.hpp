@@ -3,6 +3,7 @@
 #include <string>
 #include <iterator>
 #include <algorithm>
+#include <numeric>
 
 template<typename T>
 
@@ -57,7 +58,7 @@ template <typename T>
 void printVector(const std::vector<T>& v)
 {
 	std::cout << "[";
-	for (T value : v)
+	for (const auto& value : v)
 	{
 		std::cout << value << ", ";
 	}
@@ -92,4 +93,37 @@ int cleanupVector(std::vector<T>& v)
 	std::reverse(v.begin(), v.end());
 	std::cout << "Corrected " << error_count << " false values and reversed data set.\n";
 	return error_count;
+}
+
+template <typename T>
+void analyzeVector(const std::vector<T>& v)
+{
+	std::cout << "Analyzing Data Set:\n";
+	printVector(v);
+	// determine Sum
+	T sum = std::accumulate(v.begin(), v.end(), T());
+	T largest = *std::max_element(v.begin(), v.end());
+	double average = static_cast<double>(sum) / static_cast<double>(v.size());
+	std::cout << "Sum: " << sum << ", Max. Value: " << largest << ", Average: " << average << std::endl;
+}
+template <>
+void analyzeVector<bool>(const std::vector<bool>& boolean_v)
+{
+	//for (bool datapoint : boolean_v)
+	int sum = std::accumulate(boolean_v.begin(), boolean_v.end(), 0);
+	double avg = static_cast<double>(sum) / static_cast<double>(boolean_v.size());
+	std::cout << "Parameter was true " << sum << " of " << boolean_v.size() << " times\n";
+	std::cout << "-> Parameter was " << ((avg < 0.5) ? "inactive" : "active") << " most of the time" << std::endl;
+}
+
+template <typename T, std::size_t size>
+std::vector<T> frameToVector(const T (&frame)[size])
+{
+	std::vector<T> v;
+	for (int i = 0; i < size; i++)
+	{
+		v.push_back(frame[i]);
+	}
+	std::cout << "Transformed frame of size " << size << " into a vector data set." << std::endl;
+	return v;
 }
