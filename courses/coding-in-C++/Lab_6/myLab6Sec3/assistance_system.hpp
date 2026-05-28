@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
+#include <memory>
 
 #include "vehicle.hpp"
 

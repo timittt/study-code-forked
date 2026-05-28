@@ -28,6 +28,11 @@ void Vehicle::accelerate(double amount_kmh)
 
 void Vehicle::brake(double amount_kmh)
 {
+    if (speed_kmh < 0.0)
+    {
+        speed_kmh = 0.0;
+    }
+
     if (amount_kmh <= 0.0)
     {
         return;
@@ -35,11 +40,6 @@ void Vehicle::brake(double amount_kmh)
 
     speed_kmh -= amount_kmh;
     brake_light_on = true;
-
-    if (speed_kmh < 0.0)
-    {
-        speed_kmh = 0.0;
-    }
 }
 
 void Vehicle::steer(double angle)

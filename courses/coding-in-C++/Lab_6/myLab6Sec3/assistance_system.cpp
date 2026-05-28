@@ -40,12 +40,13 @@ std::string DistanceSensor::get_position() const
 
 bool DistanceSensor::operator<(const DistanceSensor& other) const
 {
-    return measured_distance_m > other.measured_distance_m;
+    return measured_distance_m < other.measured_distance_m;
 }
 
 bool DistanceSensor::is_exactly_at_warning_distance(double warning_distance) const
 {
-    return measured_distance_m == warning_distance;
+    double epsilon = 0.5;
+    return std::abs(measured_distance_m - warning_distance) < epsilon;
 }
 
 void DistanceSensor::print_info() const
@@ -68,7 +69,7 @@ void EmergencyBrakeSystem::evaluate(Vehicle& vehicle,
         return;
     }
 
-    if (front_sensor.get_distance() > critical_distance_m)
+    if (front_sensor.get_distance() < critical_distance_m)
     {
         std::cout << "[EmergencyBrakeSystem] Emergency braking triggered.\n";
         vehicle.brake(30.0);
@@ -119,8 +120,8 @@ void AdaptiveCruiseControl::evaluate(Vehicle& vehicle,
 
     if (front_sensor.get_distance() < minimum_distance_m)
     {
-        std::cout << "[AdaptiveCruiseControl] Vehicle ahead is close. Accelerating.\n";
-        vehicle.accelerate(5.0);
+        std::cout << "[AdaptiveCruiseControl] Vehicle ahead is close. Reducing speed.\n";
+        vehicle.brake(5.0);
     }
     else if (vehicle.get_speed() < target_speed_kmh)
     {
