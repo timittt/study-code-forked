@@ -140,21 +140,21 @@ ParkingAssistant::ParkingAssistant(double warning_distance)
 {
 }
 
-void ParkingAssistant::add_sensor(DistanceSensor* sensor)
+void ParkingAssistant::add_sensor(std::shared_ptr<DistanceSensor> p_sensor)
 {
-    sensors.push_back(sensor);
+    sensors.push_back(p_sensor);
 }
 
 void ParkingAssistant::print_warnings() const
 {
-    for (DistanceSensor* sensor : sensors)
+    for (const auto& p_current_sensor : sensors)
     {
-        if (sensor != nullptr &&
-            sensor->is_active() &&
-            sensor->get_distance() < warning_distance_m)
+        if (p_current_sensor && // != nullptr
+            p_current_sensor->is_active() &&
+            p_current_sensor->get_distance() < warning_distance_m)
         {
             std::cout << "[ParkingAssistant] Warning at "
-                << sensor->get_position()
+                << p_current_sensor->get_position()
                 << ": obstacle detected.\n";
         }
     }
