@@ -67,7 +67,7 @@ double Vehicle::get_lane_offset() const
     return lane_offset_m;
 }
 
-const std::string& Vehicle::get_model() const
+std::string Vehicle::get_model() const
 {
     return model;
 }
