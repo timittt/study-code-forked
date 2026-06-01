@@ -37,7 +37,7 @@ public:
         return device.getTemperature();
     }
 };
-
+/*
 int main()
 {
     LegacyTemperatureDevice legacy_device;
@@ -47,4 +47,4 @@ int main()
     Sensor *sensor = &adapter;
 
     std::cout << sensor->read_value() << "\n";
-}
+}*/
