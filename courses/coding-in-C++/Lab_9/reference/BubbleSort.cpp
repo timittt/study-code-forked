@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
-
+/*
 int main() {
 
-    int arr[] = {7, 4, 5, 2};
+    int arr[] = {8, 8, 8, 8};
     int n = 4;
     int temp;
 
@@ -45,4 +45,4 @@ int main() {
     cout << endl;
 
     return 0;
-}
+}*/

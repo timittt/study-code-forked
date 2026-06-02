@@ -19,5 +19,6 @@
   <Project Path="../courses/coding-in-C++/Lab_6/myLab6Sec3/myLab6Sec3.vcxproj" Id="2176a61c-51cf-4449-a685-423e43dd29a0" />
   <Project Path="../courses/coding-in-C++/Lab_6/myLab6Sec4/myLab6Sec4.vcxproj" Id="fe09fadc-2103-466d-85aa-a316e62a7e90" />
   <Project Path="../courses/coding-in-C++/Lab_8/myLab8Observer/myLab8Observer.vcxproj" Id="2962885a-4acc-48f0-a2d8-d19205b00ceb" />
+  <Project Path="../courses/coding-in-C++/Lab_9/myLab9Bubblesort/myLab9Bubblesort.vcxproj" Id="6b30cf7b-91e2-4c99-aab6-1263e7e0882e" />
   <Project Path="sort_with_lambdas/sort_with_lambdas.vcxproj" Id="009efc2e-6d96-40e0-a4de-be1b1470d01c" />
 </Solution>
