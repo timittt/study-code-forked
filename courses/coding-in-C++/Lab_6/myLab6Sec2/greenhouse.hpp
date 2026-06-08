@@ -10,6 +10,7 @@ public:
 	void update_value(const double new_value);
 	double get_value() const { return this->value; };
 	void print_info() const;
+	void simulate_failure() const;
 private:
 	std::string name;
 	double value;
